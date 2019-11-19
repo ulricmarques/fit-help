@@ -21,12 +21,12 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Exercises',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       Icon={Icon.MaterialCommunityIcons}
       focused={focused}
-      name="fire"
+      name="dumbbell"
     />
   ),
 }
@@ -38,7 +38,7 @@ const HistoryStack = createStackNavigator({
 HistoryStack.navigationOptions = {
   tabBarLabel: 'History',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon Icon={Icon.FontAwesome} focused={focused} name="commenting-o" />
+    <TabBarIcon Icon={Icon.MaterialCommunityIcons} focused={focused} name="chart-bar" />
   ),
 }
 
@@ -49,7 +49,7 @@ const ProfileStack = createStackNavigator({
 ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon Icon={Icon.Feather} focused={focused} name="user" />
+    <TabBarIcon Icon={Icon.MaterialCommunityIcons} focused={focused} name="account" />
   ),
 }
 
@@ -60,6 +60,10 @@ const tabNavigator = createBottomTabNavigator({
   HomeStack,
   HistoryStack,
   ProfileStack
+}, {
+  tabBarOptions: {
+    style: { backgroundColor: '#00AFB9' },
+  }
 });
 
 tabNavigator.path = '';
