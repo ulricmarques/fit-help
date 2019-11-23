@@ -12,8 +12,6 @@ export const Card = ({ pic, title, caption }) => (
         activeOpacity={0.9}
         title={title}
         titleStyle={styles.title}
-        caption={caption}
-        captionStyle={styles.caption}
         containerStyle={styles.container}
         featured
     />
@@ -24,25 +22,22 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         width: Layout.window.width - 80,
-        height: Layout.window.height - BOTTOM_BAR_HEIGHT * 10,
+        height: Layout.window.height - BOTTOM_BAR_HEIGHT * 5,
         alignSelf: 'center',
-        //backgroundColor: "#E5F9E2",
+        backgroundColor: '#E5F9E2'
+
     },
     imageContainer: {
         width: Layout.window.width - 150,
-        height: Layout.window.height - BOTTOM_BAR_HEIGHT * 13,
+        height: Layout.window.height - BOTTOM_BAR_HEIGHT * 10,
         borderRadius: 20,
 
         overflow: 'hidden', // this does magic
     },
     title: {
         position: 'absolute',
-        left: 10,
-        bottom: 30,
-    },
-    caption: {
-        position: 'absolute',
-        left: 10,
-        bottom: 10,
-    },
+        bottom: 0,
+        alignSelf: 'center',
+        color: '#1B2021'
+    }
 })
