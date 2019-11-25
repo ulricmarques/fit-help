@@ -7,37 +7,31 @@ const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49 // https://stackoverflow.com
 
 export const Card = ({ pic, title, caption }) => (
     <Tile
-        imageSrc={pic}
-        imageContainerStyle={styles.imageContainer}
-        activeOpacity={0.9}
-        title={title}
-        titleStyle={styles.title}
-        containerStyle={styles.container}
-        featured
+      imageSrc={pic}
+      imageContainerStyle={styles.imageContainer}
+      activeOpacity={0.9}
+      title={title}
+      titleStyle={styles.title}
+      containerStyle={styles.container}
     />
-)
-
-const styles = StyleSheet.create({
+  )
+  
+  const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        width: Layout.window.width - 80,
-        height: Layout.window.height - BOTTOM_BAR_HEIGHT * 5,
-        alignSelf: 'center',
-        backgroundColor: '#E5F9E2'
-
+      flex: 1,
+      alignItems: 'center',
+      backgroundColor: '#1B2021',
     },
     imageContainer: {
-        width: Layout.window.width - 150,
-        height: Layout.window.height - BOTTOM_BAR_HEIGHT * 10,
-        borderRadius: 20,
-
-        overflow: 'hidden', // this does magic
+      width: Layout.window.width - 100,
+      height: Layout.window.height - BOTTOM_BAR_HEIGHT * 60,
+      borderRadius: 20,
+      overflow: 'hidden',
+      backgroundColor: '#BFFFB3'
     },
     title: {
-        position: 'absolute',
-        bottom: 0,
-        alignSelf: 'center',
-        color: '#1B2021'
+      position: 'absolute',
+      left: 30,
+      bottom: 30,
     }
-})
+  })

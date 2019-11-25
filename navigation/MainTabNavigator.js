@@ -10,7 +10,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
-  default: {},
+  default: { headerLayoutPreset: 'center',},
 });
 
 const HomeStack = createStackNavigator(
@@ -31,9 +31,14 @@ HomeStack.navigationOptions = {
   ),
 }
 
-const HistoryStack = createStackNavigator({
-  History: HistoryScreen,
-})
+const HistoryStack = createStackNavigator(
+  {
+    History: HistoryScreen,
+  },
+  {
+    headerLayoutPreset: 'center'
+  }
+);
 
 HistoryStack.navigationOptions = {
   tabBarLabel: 'History',
@@ -42,9 +47,14 @@ HistoryStack.navigationOptions = {
   ),
 }
 
-const ProfileStack = createStackNavigator({
+const ProfileStack = createStackNavigator(
+  {
   Profile: ProfileScreen,
-})
+  },
+  {
+    headerLayoutPreset: 'center'
+  }
+);
 
 ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
