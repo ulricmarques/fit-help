@@ -1,9 +1,9 @@
-import React from 'react'
-import Colors from '../constants/Colors'
+import React from "react";
+import Colors from "../constants/Colors";
 
 export default class TabBarIcon extends React.Component {
   render() {
-    const { Icon, name, focused } = this.props
+    const { Icon, name, focused } = this.props;
     return (
       <Icon
         name={name}
@@ -11,6 +11,6 @@ export default class TabBarIcon extends React.Component {
         style={{ marginBottom: -3 }}
         color={focused ? Colors.info : Colors.dark}
       />
-    )
+    );
   }
 }

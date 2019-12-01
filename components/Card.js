@@ -1,37 +1,40 @@
-import React from 'react'
-import { Platform, StyleSheet } from 'react-native'
-import { Tile } from 'react-native-elements'
-import Layout from '../constants/Layout'
+import React from "react";
+import { Platform, StyleSheet } from "react-native";
+import { Tile } from "react-native-elements";
+import Layout from "../constants/Layout";
+import Colors from "../constants/Colors";
 
-const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49 // https://stackoverflow.com/a/50318831/6141587
+const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49;
 
-export const Card = ({ pic, title, caption }) => (
-    <Tile
-      imageSrc={pic}
-      imageContainerStyle={styles.imageContainer}
-      activeOpacity={0.9}
-      title={title}
-      titleStyle={styles.title}
-      containerStyle={styles.container}
-    />
-  )
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: '#1B2021',
-    },
-    imageContainer: {
-      width: Layout.window.width - 100,
-      height: Layout.window.height - BOTTOM_BAR_HEIGHT * 60,
-      borderRadius: 20,
-      overflow: 'hidden',
-      backgroundColor: '#BFFFB3'
-    },
-    title: {
-      position: 'absolute',
-      left: 30,
-      bottom: 30,
-    }
-  })
+export const Card = ({ pic, title }) => (
+  <Tile
+    imageSrc={pic}
+    imageProps={{ resizeMode: "center" }}
+    imageContainerStyle={styles.imageContainer}
+    activeOpacity={1}
+    title={title}
+    titleStyle={styles.title}
+    containerStyle={styles.container}
+  />
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center"
+  },
+  imageContainer: {
+    width: Layout.window.width - 30,
+    height: Layout.window.height - BOTTOM_BAR_HEIGHT * 6,
+    borderRadius: 20,
+    overflow: "hidden",
+    backgroundColor: Colors.secondary,
+    borderWidth: 2
+  },
+  title: {
+    position: "absolute",
+    alignSelf: "center",
+    color: Colors.dark,
+    bottom: 30
+  }
+});

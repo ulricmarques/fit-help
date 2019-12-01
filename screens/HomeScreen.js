@@ -1,98 +1,77 @@
-import React from 'react'
-import { View, SafeAreaView, StyleSheet } from 'react-native'
-import Swiper from 'react-native-deck-swiper'
-import { Card } from '../components/Card'
-import { HomeScreenPics } from '../constants/Pics'
-import Colors from '../constants/Colors'
-import { Text, Icon, SearchBar, Overlay  } from 'react-native-elements'
-
+import React from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
+import Swiper from "react-native-deck-swiper";
+import { Card } from "../components/Card";
+import { HomeScreenPics } from "../constants/Pics";
+import Colors from "../constants/Colors";
+import { SearchBar } from "react-native-elements";
 
 class HomeScreen extends React.Component {
-
   state = {
-    search: '',
-    isVisible: false
+    search: "",
+    isVisible: false,
+    cardIndex: 0
   };
-  
+
   updateSearch = search => {
     this.setState({ search });
   };
 
-  showOverlay = () => {
-    this.setState({ isVisible: true});
+  toExercise = index => {
+    this.props.navigation.navigate("Exercise", {
+      cardIndex: index
+    });
   };
 
   static navigationOptions = {
-    title: 'Exercícios',
+    title: "Exercícios",
     headerStyle: {
       backgroundColor: Colors.accent
     },
-    headerTintColor: '#fff',
+    headerTintColor: "#fff",
     headerTitleStyle: {
-      fontWeight: 'bold',
+      fontWeight: "bold"
     }
   };
 
-    render() {
-      const { search } = this.state;
+  render() {
+    const { search } = this.state;
 
-      <Overlay isVisible={this.state.isVisible}>
-        <Text>Hello from Overlay!</Text>
-      </Overlay>;
-
-      {
-        this.state.visible && (
-          <Overlay isVisible>
-            <Text>Hello from Overlay!</Text>
-          </Overlay>
-        );
-      }
-
-      <Overlay
-        isVisible={this.state.isVisible}
-        windowBackgroundColor="rgba(255, 255, 255, .5)"
-        overlayBackgroundColor="red"
-        width="auto"
-        height="auto"
-      >
-        <Text>Hello from Overlay!</Text>
-      </Overlay>;
-
-      <Overlay
-        isVisible={this.state.isVisible}
-        onBackdropPress={() => this.setState({ isVisible: false })}
-      >
-        <Text>Hello from Overlay!</Text>
-      </Overlay>;
-      return (
-        <SafeAreaView style={styles.container}>
-          <SearchBar
-            placeholder="Type Here..."
-            onChangeText={this.updateSearch}
-            value={search}
-          />
-          <Swiper
-            cards={HomeScreenPics}
-            onTapCard={this.showOverlay}
-            renderCard={Card}
-            infinite // keep looping cards infinitely
-            backgroundColor="#1B2021"
-            cardHorizontalMargin={0}
-            marginBottom={30}
-            verticalSwipe={false}
-            showSecondCard={true}
-            stackSize={2} // number of cards shown in background
-          />
-        </SafeAreaView>
-      )
-    }
+    return (
+      <SafeAreaView style={styles.container}>
+        <SearchBar
+          placeholder="Digite aqui..."
+          onChangeText={this.updateSearch}
+          value={search}
+        />
+        <Swiper
+          ref={swiper => {
+            this.swiper = swiper;
+          }}
+          cardIndex={this.state.cardIndex}
+          cards={HomeScreenPics}
+          onTapCard={this.toExercise}
+          renderCard={Card}
+          infinite
+          backgroundColor={Colors.dark}
+          cardHorizontalMargin={0}
+          marginTop={60}
+          marginBottom={100}
+          verticalSwipe={true}
+          showSecondCard={true}
+          stackSize={3} // number of cards shown in background
+          stackSeparation={15}
+        />
+      </SafeAreaView>
+    );
   }
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#1B2021',
-    },
-  })
+}
 
-export default HomeScreen
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#1B2021"
+  }
+});
+
+export default HomeScreen;
