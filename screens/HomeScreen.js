@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { Card } from "../components/Card";
 import { HomeScreenPics } from "../constants/Pics";
@@ -38,7 +38,7 @@ class HomeScreen extends React.Component {
     const { search } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <SearchBar
           placeholder="Digite aqui..."
           onChangeText={this.updateSearch}
@@ -62,7 +62,7 @@ class HomeScreen extends React.Component {
           stackSize={3} // number of cards shown in background
           stackSeparation={15}
         />
-      </SafeAreaView>
+      </View>
     );
   }
 }
