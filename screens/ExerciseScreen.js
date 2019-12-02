@@ -1,9 +1,10 @@
 import React from "react";
-import { Platform, View, StyleSheet } from "react-native";
+import { Platform, View, StyleSheet, Vibration } from "react-native";
 import Layout from "../constants/Layout";
 import Colors from "../constants/Colors";
 import { Button, Input, Tile } from "react-native-elements";
 import { HomeScreenPics } from "../constants/Pics";
+import { Accelerometer } from 'expo-sensors';
 
 const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49;
 
@@ -11,7 +12,49 @@ class ExerciseScreen extends React.Component {
   state = {
     defaultStartButtonText: "Iniciar",
     started: false,
-    counter: 0
+    counter: 0,
+    inputWeight: "",
+    inputRepetitions: "",
+    accelerometerData: {},
+  };
+
+  updateWeight = weight => {
+    this.setState({ inputWeight: weight });
+  };
+
+  updateRepetitions = repetitions => {
+    this.setState({ inputRepetitions: repetitions });
+  };
+
+  makeVibration() {
+    Vibration.vibrate();
+  }
+
+  componentDidMount() {
+    this._toggle();
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
+  }
+
+  _toggle = () => {
+    if (this._subscription) {
+      this._unsubscribe();
+    } else {
+      this._subscribe();
+    }
+  };
+
+  _subscribe = () => {
+    this._subscription = Accelerometer.addListener(accelerometerData => {
+      this.setState({ accelerometerData });
+    });
+  };
+
+  _unsubscribe = () => {
+    this._subscription && this._subscription.remove();
+    this._subscription = null;
   };
 
   startCount = () => {
@@ -32,7 +75,15 @@ class ExerciseScreen extends React.Component {
   };
 
   render() {
+
+
+
     const { navigation } = this.props;
+    const { inputWeight, inputRepetitions } = this.state;
+
+
+    let { x, y, z } = this.state.accelerometerData;
+    Accelerometer.setUpdateInterval(100);
 
     const exercisePic =
       HomeScreenPics[navigation.getParam("cardIndex", "0")].pic;
@@ -49,6 +100,8 @@ class ExerciseScreen extends React.Component {
               name: "dumbbell",
               color: "#FFF"
             }}
+            onChangeText={this.updateWeight}
+            value={inputWeight}
             inputContainerStyle={styles.weightInput}
             leftIconContainerStyle={styles.inputIcon}
           />
@@ -59,6 +112,8 @@ class ExerciseScreen extends React.Component {
               name: "sync",
               color: "#FFF"
             }}
+            onChangeText={this.updateRepetitions}
+            value={inputRepetitions}
             inputContainerStyle={styles.repetitionInput}
             leftIconContainerStyle={styles.inputIcon}
           />
@@ -73,6 +128,7 @@ class ExerciseScreen extends React.Component {
         />
 
         <Button
+          disabled={inputWeight.length > 0 && inputRepetitions.length > 0 ? false : true}
           icon={{
             name: "timer",
             type: "material-community",
@@ -81,7 +137,7 @@ class ExerciseScreen extends React.Component {
           }}
           title={
             this.state.started
-              ? `${this.state.counter} repetições`
+              ? `${contagem(y)} repetições`
               : this.state.defaultStartButtonText
           }
           buttonStyle={styles.startButton}
@@ -90,6 +146,31 @@ class ExerciseScreen extends React.Component {
         />
       </View>
     );
+  }
+}
+
+
+var contador = 0;
+var b = 0;
+var a = 0;
+var teste = 0;
+function contagem(eixoy) {
+  if (eixoy <= 0.3) {
+    b = 1;
+  }
+  if (eixoy >= 0.8) {
+    a = 1;
+  }
+  if (a == 1 && b == 1) {
+    a = 0;
+    b = 0;
+    teste++;
+  } if (teste == 2) {
+    teste = 0;
+    contador++;
+    return contador;
+  } else {
+    return contador;
   }
 }
 

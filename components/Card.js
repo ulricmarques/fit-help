@@ -1,10 +1,7 @@
 import React from "react";
 import { Platform, StyleSheet } from "react-native";
 import { Tile } from "react-native-elements";
-import Layout from "../constants/Layout";
 import Colors from "../constants/Colors";
-
-const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49;
 
 export const Card = ({ pic, title }) => (
   <Tile
@@ -20,12 +17,12 @@ export const Card = ({ pic, title }) => (
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center"
   },
   imageContainer: {
-    width: Layout.window.width - 30,
-    height: Layout.window.height - BOTTOM_BAR_HEIGHT * 6,
+    marginTop: -50,
+    width: 300,
+    height: 300,
     borderRadius: 20,
     overflow: "hidden",
     backgroundColor: Colors.secondary,

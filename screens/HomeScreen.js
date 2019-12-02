@@ -43,6 +43,13 @@ class HomeScreen extends React.Component {
           placeholder="Digite aqui..."
           onChangeText={this.updateSearch}
           value={search}
+          searchIcon={{
+            type: "material-community",
+            name: "magnify",
+            color: Colors.dark
+          }}
+          inputContainerStyle={styles.searchInput}
+          leftIconContainerStyle={styles.inputIcon}
         />
         <Swiper
           ref={swiper => {
@@ -55,12 +62,12 @@ class HomeScreen extends React.Component {
           infinite
           backgroundColor={Colors.dark}
           cardHorizontalMargin={0}
-          marginTop={60}
-          marginBottom={100}
           verticalSwipe={true}
           showSecondCard={true}
           stackSize={3} // number of cards shown in background
           stackSeparation={15}
+          containerStyle={styles.swiperContainer}
+          childrenOnTop={true}
         />
       </View>
     );
@@ -70,7 +77,28 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1B2021"
+    backgroundColor: Colors.dark,
+    marginTop: -17
+  },
+  swiperContainer: {
+    position: "absolute",
+    marginTop: 100,
+    maxHeight: 500
+  },
+  searchInput: {
+    position: "absolute",
+    top: 20,
+    marginHorizontal: 15,
+    width: 350,
+    borderRadius: 10,
+    borderWidth: 2,
+    backgroundColor: "white"
+  },
+  inputIcon: {
+    backgroundColor: Colors.primary,
+    width: 40,
+    marginLeft: -1,
+    borderRadius: 10
   }
 });
 

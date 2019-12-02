@@ -192,7 +192,8 @@ class HistoryScreen extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: Colors.dark
+    backgroundColor: Colors.dark,
+    marginTop: -17
   },
   searchInput: {
     position: "absolute",

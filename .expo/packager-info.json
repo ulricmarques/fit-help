@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 4256,
-  "expoServerNgrokUrl": "https://99-aet.anonymous.fit-help.exp.direct",
-  "packagerNgrokUrl": "https://packager.99-aet.anonymous.fit-help.exp.direct",
-  "ngrokPid": 12960
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
