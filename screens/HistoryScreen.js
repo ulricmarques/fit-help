@@ -28,23 +28,16 @@ const list = [
   },
   {
     pic: require("../assets/images/exercises/dumbbell.png"),
-    title: "Dumbbell",
+    title: "Haltere",
     date: "18/11/2019",
     weight: 30,
     repetitions: 15
   },
   {
     pic: require("../assets/images/exercises/bench-dumbbell.png"),
-    title: "Bench dumbbell",
+    title: "Haltere no banco",
     date: "18/11/2019",
     weight: 40,
-    repetitions: 10
-  },
-  {
-    pic: require("../assets/images/exercises/exercicio.png"),
-    title: "Exercício",
-    date: "16/11/2019",
-    weight: 20,
     repetitions: 10
   },
   {

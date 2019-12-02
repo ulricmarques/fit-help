@@ -13,15 +13,11 @@ export const HomeScreenPics = [
   },
   {
     pic: require("../assets/images/exercises/dumbbell.png"),
-    title: "Dumbbell"
+    title: "Haltere"
   },
   {
     pic: require("../assets/images/exercises/bench-dumbbell.png"),
-    title: "Bench dumbbell"
-  },
-  {
-    pic: require("../assets/images/exercises/exercicio.png"),
-    title: "Exercício"
+    title: "Haltere no banco"
   },
   {
     pic: require("../assets/images/exercises/rosca.png"),
